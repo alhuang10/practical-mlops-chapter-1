@@ -15,3 +15,19 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+name: Makefile Install/Lint/Test
+on: [push]
+jobs:
+  Install:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make install
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make lint
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make test
