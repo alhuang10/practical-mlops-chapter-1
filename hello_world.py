@@ -7,4 +7,5 @@ def add(x: int, y: int):
 
 if __name__ == "__main__":
     hello_world()
-    print(add(3,4))
+    
+    print(f"3 +4 is {add(3,4)}")

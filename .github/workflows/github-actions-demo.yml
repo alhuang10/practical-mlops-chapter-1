@@ -15,12 +15,30 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  Test:
+
+  Run Linter/Tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: install dependencies
+      - name: Install dependencies
         run: make install
-      - name: run tests
+      - name: Run linter
+        run: make lint
+      - name: Run tests
         run: make test
+
+  Test Multiple Python Versions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['pypy-3.7', 'pypy-3.8'] 
+    name: Python ${{ matrix.python-version }} sample
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - run: python hello_world.py
