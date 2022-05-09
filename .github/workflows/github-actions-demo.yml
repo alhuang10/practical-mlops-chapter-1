@@ -16,7 +16,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-  Run Linter/Tests:
+  Run-Linter-Plus-Tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -28,7 +28,7 @@ jobs:
       - name: Run tests
         run: make test
 
-  Test Multiple Python Versions:
+  Test-Multiple-Python-Versions:
     runs-on: ubuntu-latest
     strategy:
       matrix:
